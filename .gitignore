@@ -1,0 +1,53 @@
+################################################################################
+# Archivos de la Solución (Root)
+################################################################################
+# La carpeta de configuración de Visual Studio
+.vs/
+
+# Archivos de solución generados
+*.suo
+*.user
+*.pdb
+*.opensdf
+*.sdf
+*.cache
+*.bak
+
+# Archivos de logs o temporales
+*.log
+
+################################################################################
+# Carpetas de Compilación dentro del Proyecto (ComedorComunitario)
+################################################################################
+# Excluye las carpetas bin y obj de CUALQUIER proyecto/subcarpeta
+**/[Bb]in/
+**/[Oo]bj/
+
+# Paquetes NuGet
+packages/
+*.nupkg
+
+################################################################################
+# Archivos específicos de MAUI/Xamarin
+################################################################################
+# Archivos de configuración de plataformas
+# Windows
+AppPackages/
+BundleArtifacts/
+
+# Android
+*.apk
+*.aab
+
+# iOS / macOS
+*.ipa
+*.xcarchive
+
+# Archivos de depuración y pruebas
+TestResults/
+
+################################################################################
+# Excluir Archivos de Configuración de Servicios (SECRETS)
+################################################################################
+# Credenciales de Google Cloud
+ComedorComunitario/Configuration/proyectoexcel-477121-e1594d3156be.json

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ComedorComunitario.Data.ViewModel"
+             xmlns:models="clr-namespace:ComedorComunitario.Data.Models"
+             xmlns:base="clr-namespace:ComedorComunitario.Data.Base"
+             x:Class="ComedorComunitario.Views.HomePage"
+             Title="Registro de Inscritos">
+
+    <ContentPage.Resources>
+        <base:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Padding="15" Spacing="15">
+
+        <Button Text="Consultar Inscritos (Google Forms)"
+                Command="{Binding LoadDataCommand}"
+                IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}" />
+
+        <ActivityIndicator IsRunning="{Binding IsLoading}"
+                           IsVisible="{Binding IsLoading}"
+                           HorizontalOptions="Center" />
+
+        <Label Text="Personas Inscritas"
+               FontSize="Title"
+               FontAttributes="Bold"
+               Margin="0, 10, 0, 0" />
+
+        <CollectionView ItemsSource="{Binding Inscripciones}" SelectionMode="None">
+
+            <CollectionView.Header>
+                <Grid Padding="10" ColumnDefinitions="2*, 2*, 1*, 2*" BackgroundColor="#EEEEEE">
+                    <Label Text="Nombre" FontAttributes="Bold" Grid.Column="0" />
+                    <Label Text="Apellido" FontAttributes="Bold" Grid.Column="1" />
+                    <Label Text="Edad" FontAttributes="Bold" Grid.Column="2" HorizontalTextAlignment="Center" />
+                    <Label Text="ID" FontAttributes="Bold" Grid.Column="3" />
+                </Grid>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PersonaInscrita">
+                    <Grid Padding="10" ColumnDefinitions="2*, 2*, 1*, 2*">
+                        <Label Text="{Binding Nombre}" Grid.Column="0" />
+                        <Label Text="{Binding Apellido}" Grid.Column="1" />
+                        <Label Text="{Binding Edad}" Grid.Column="2" HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding Identificacion}" Grid.Column="3" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>
